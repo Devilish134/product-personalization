@@ -20,6 +20,15 @@ const Product = (props) => {
     ];
   };
 
+  const getPrice = () => {
+    const price = props.sizes.find(
+      ({ name }) => name === currentSize
+    );
+    console.log(price);
+
+    return props.basePrice + price.additionalPrice;
+  };
+
   return (
     <article className={styles.product}>
       <div className={styles.imageContainer}>
@@ -35,7 +44,7 @@ const Product = (props) => {
             {props.title}
           </h2>
           <span className={styles.price}>
-            {props.basePrice}
+            Price: {getPrice()}
           </span>
         </header>
         <form>
