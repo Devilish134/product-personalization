@@ -24,9 +24,22 @@ const Product = (props) => {
     const price = props.sizes.find(
       ({ name }) => name === currentSize
     );
-    console.log(price);
 
     return props.basePrice + price.additionalPrice;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('===========================');
+    console.log('Product summary');
+    console.log('===========================');
+    console.log('Name: ', props.title);
+    console.log(
+      'Price: ',
+      getPrice(props.basePrice)
+    );
+    console.log('Size: ', currentSize);
+    console.log('Color: ', currentColor);
   };
 
   return (
@@ -94,7 +107,10 @@ const Product = (props) => {
               ))}
             </ul>
           </div>
-          <Button className={styles.button}>
+          <Button
+            className={styles.button}
+            handleSubmit={handleSubmit}
+          >
             <span className='fa fa-shopping-cart' />
           </Button>
         </form>
