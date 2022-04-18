@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import { useState } from 'react';
 import Button from '../Button/Button';
 import shortid from 'shortid';
+import ProductImage from '../ProductImage/ProductImage';
 
 const Product = (props) => {
   const [currentColor, setCurrentColor] = useState(
@@ -44,13 +45,10 @@ const Product = (props) => {
 
   return (
     <article className={styles.product}>
-      <div className={styles.imageContainer}>
-        <img
-          className={styles.image}
-          alt={props.name}
-          src={`${process.env.PUBLIC_URL}/images/products/shirt-${props.name}--${currentColor}.jpg`}
-        />
-      </div>
+      <ProductImage
+        name={props.name}
+        color={currentColor}
+      />
       <div>
         <header>
           <h2 className={styles.name}>
