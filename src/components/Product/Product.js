@@ -1,7 +1,5 @@
 import styles from "./Product.module.scss";
-import clsx from "clsx";
 import { useState } from "react";
-import shortid from "shortid";
 import ProductImage from "../ProductImage/ProductImage";
 import ProductForm from "../ProductForm/ProductForm";
 
@@ -10,14 +8,6 @@ const Product = (props) => {
     useState(props.colors[0]);
   const [currentSize, setCurrentSize] =
     useState(props.sizes[0].name);
-
-  const prepareColorClassName = (color) => {
-    return styles[
-      "color" +
-        color[0].toUpperCase() +
-        color.substr(1).toLowerCase()
-    ];
-  };
 
   const getPrice = () => {
     const price = props.sizes.find(
@@ -61,9 +51,6 @@ const Product = (props) => {
         <ProductForm
           currentColor={currentColor}
           currentSize={currentSize}
-          prepareColorClassName={
-            prepareColorClassName
-          }
           handleSubmit={handleSubmit}
           setCurrentColor={setCurrentColor}
           setCurrentSize={setCurrentSize}

@@ -1,36 +1,63 @@
+@use 'sass:math';
 @import '../../styles/settings.scss';
 
-.button {
-    background: $color-success;
-    border: 0;
-    color: $color-light;
-    text-align: center;
-    line-height: 1.3;
+.optionLabel {
+  margin: $base-size 0;
+  }
+  
+.choices {
+  display: flex;
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+
+  button {
+    border: none;
+    color: inherit;
+    font: inherit;
+    background: $color-dark;
+    border-radius: math.div($radius, 2);
     padding: $base-size;
-    margin: 0 $base-size $base-size $base-size;
-    border-radius: $radius;
+    margin: math.div($base-size, 2.5) $base-size;
+    background: rgba(47, 53, 66, 0.5);
+    min-width: $base-size * 3;
+    min-height: $base-size * 3;
+    text-align: center;
     cursor: pointer;
-    font-weight: 700;
-    text-transform: uppercase;
     transition: $transition;
-    
-    &:hover {
-        background: darken($color-success, 5%);
+
+    &.active {
+      opacity: 1;
+      transform: scale(1.2);
+      background: rgb(47, 53, 66);
     }
-    
-    &.danger {
-        background: $color-warning;
-    
-        &:hover {
-            background: darken($color-warning, 5%);
-        }
+
+    &.colorBlack {
+      background: #000;
     }
-    
-    &.transparent {
-        background: transparent;
-    
-        &:hover {
-            color: darken($color-light, 20%);
-        }
+
+    &.colorRed {
+      background: #e74c3c;
     }
+
+    &.colorWhite {
+      background: #fff;
+    }
+
+    &.colorBlue {
+      background: #3498db;
+    }
+
+    &.colorGreen {
+      background: #2ecc71;
+    }
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+}
+  
+.sizes .choices button:hover {
+  background: rgb(47, 53, 66);
 }

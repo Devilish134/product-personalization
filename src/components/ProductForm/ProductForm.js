@@ -1,61 +1,21 @@
 import styles from "./ProductForm.module.scss";
 import Button from "../Button/Button";
-import clsx from "clsx";
-import shortid from "shortid";
+import OptionSize from "../OptionSize/OptionSize";
+import OptionColor from "../OptionColor/OptionColor";
 
 const ProductForm = (props) => {
   return (
     <form>
-      <div className={styles.sizes}>
-        <h3 className={styles.optionLabel}>
-          Sizes
-        </h3>
-        <ul className={styles.choices}>
-          {props.sizes.map((size) => (
-            <li>
-              <button
-                type="button"
-                className={clsx(
-                  props.currentSize ===
-                    size.name && styles.active
-                )}
-                onClick={() =>
-                  props.setCurrentSize(
-                    size.name
-                  )
-                }
-              >
-                {size.name}
-              </button>
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div className={styles.colors}>
-        <h3 className={styles.optionLabel}>
-          Colors
-        </h3>
-        <ul className={styles.choices}>
-          {props.colors.map((color) => (
-            <li>
-              <button
-                type="button"
-                className={clsx(
-                  props.prepareColorClassName(
-                    color
-                  ),
-                  props.currentColor ===
-                    color && styles.active
-                )}
-                onClick={() =>
-                  props.setCurrentColor(color)
-                }
-                key={shortid()}
-              />
-            </li>
-          ))}
-        </ul>
-      </div>
+      <OptionSize
+        sizes={props.sizes}
+        currentSize={props.currentSize}
+        setCurrentSize={props.setCurrentSize}
+      />
+      <OptionColor
+        currentColor={props.currentColor}
+        setCurrentColor={props.setCurrentColor}
+        colors={props.colors}
+      />
       <Button
         className={styles.button}
         handleSubmit={props.handleSubmit}
